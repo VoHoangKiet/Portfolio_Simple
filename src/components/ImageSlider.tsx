@@ -1,4 +1,7 @@
-import { Carousel, Image } from 'antd';
+import React from 'react';
+import { Carousel, Image, Button } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { CarouselRef } from 'antd/es/carousel';
 
 const ImageSlider = () => {
   const images = [
@@ -18,14 +21,43 @@ const ImageSlider = () => {
     '/1/14.jpg',
   ];
 
+  const carouselRef = React.useRef<CarouselRef | null>(null);
+
+  const goToPrev = () => {
+    if (carouselRef.current) {
+      carouselRef.current.prev();
+    }
+  };
+
+  const goToNext = () => {
+    if (carouselRef.current) {
+      carouselRef.current.next();
+    }
+  };
+
   return (
-    <Carousel autoplay>
-      {images.map((image, index) => (
-        <div key={index}>
-          <Image src={image} alt={`Slide ${index + 1}`} style={{ width: '100%', height: '100vh' }} />
-        </div>
-      ))}
-    </Carousel>
+    <div style={{ position: 'relative' }}>
+      <Carousel ref={carouselRef} autoplay>
+        {images.map((image, index) => (
+          <div key={index}>
+            <Image src={image} alt={`Slide ${index + 1}`} style={{ width: '100%', height: '90vh' }} />
+          </div>
+        ))}
+      </Carousel>
+
+      <Button 
+        icon={<LeftOutlined />} 
+        style={{ position: 'absolute', top: '50%', left: '10px', zIndex: 1 }} 
+        onClick={goToPrev}
+        size='large'
+      />
+      <Button 
+        icon={<RightOutlined />} 
+        style={{ position: 'absolute', top: '50%', right: '10px', zIndex: 1 }} 
+        onClick={goToNext}
+        size='large' 
+      />
+    </div>
   );
 };
 

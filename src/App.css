@@ -1,10 +1,14 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
-
+.header {
+  padding: 10px;
+  color: black;
+  font-size: 1.5em;
+  font-weight: bold;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
