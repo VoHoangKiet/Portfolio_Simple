@@ -5,7 +5,7 @@ import ImageSlider from "./components/ImageSlider";
 function App() {
   return (
     <div className="App">
-      <div className="header">Do Minh Thinh Portfolio</div>
+      <div className="header"></div>
       <ImageSlider />
     </div>
   );
